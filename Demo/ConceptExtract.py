@@ -1,3 +1,6 @@
+#ConceptExtract.py
+#this file extracts concepts from the speech to text
+
 from pymetamap import MetaMap
 from pandas import Series, DataFrame
 from collections import defaultdict
@@ -12,8 +15,11 @@ from nltk import ngrams
 from nltk.tokenize import sent_tokenize
 import csv
 
-def get_bp(scores, text):
-    if not "C1271104" in scores:
+def get_bp(scores, text): #scores - array of confidence scores of concept?
+    if not "C1271104" in scores: #'c1271104' is CUI (clinical unique identifier)
+	#Question: why are these CUIs relevant?
+	#is it because it might have no picked it up in the speech to text?
+	#does c1271104 = blood pressure?
 	check = text[0].find("blood pressure")
 	if not check == -1:
 	    bp_object = ['00000000', 'MMI', '1', 'bp', 'C1271104', 'x', '["bp-tx-1-"spo2"-noun-0]', 'TX', str(check) + '/14', '']
@@ -78,7 +84,7 @@ def check_pulse(concepts, scores, text):
 class PatientStatus(object):
     def __init__(self, name, binary, value = '', content = ''):
         self.name = name
-        self.binary = binary
+        self.binary = binary #binary?
         self.value = value
         self.content = content
         self.tick = 0
