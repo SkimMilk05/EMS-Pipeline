@@ -15,6 +15,8 @@ from nltk import ngrams
 from nltk.tokenize import sent_tokenize
 import csv
 
+#these methods extract bp, sp, and pulse from text
+
 def get_bp(scores, text): #scores - array of confidence scores of concept?
     if not "C1271104" in scores: #'c1271104' is CUI (clinical unique identifier)
 	#Question: why are these CUIs relevant?
@@ -83,12 +85,12 @@ def check_pulse(concepts, scores, text):
 
 class PatientStatus(object):
     def __init__(self, name, binary, value = '', content = ''):
-        self.name = name
-        self.binary = binary #binary?
-        self.value = value
+        self.name = name #concept
+        self.binary = binary #is concept there?
+        self.value = value #value asso. with concept
         self.content = content
         self.tick = 0
-        self.score = 0
+        self.score = 0 #confidence score
 
 class ConceptExtractor(object):
     def __init__(self, List_route):
