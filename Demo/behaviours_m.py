@@ -28,12 +28,12 @@ class PROTOCOLi_Action(py_trees.behaviour.Behaviour):
 # behaviors in framework
 class InformationGathering(py_trees.behaviour.Behaviour):
     def __init__(self, name = 'Information Extraction',\
-    slist = "concept_list(s&s)_revised.csv",\
-    vlist = "Vital_List.csv",\
-    exlist = "CLfromVt.csv",\
-    intlist = "concept_list(interventions).csv"):
+    slist = "concept_list(s&s)_revised.csv",\ #s -> signs & symptoms
+    vlist = "Vital_List.csv",\ #v -> vitals
+    exlist = "CLfromVt.csv",\ #e -> concept vectors from value @t?
+    intlist = "concept_list(interventions).csv"): #i -> intervention
         super(InformationGathering, self).__init__(name)
-        self.slist = slist
+        self.slist = slist 
         self.vlist = vlist
         self.exlist = exlist
         self.intlist= intlist
